@@ -1,0 +1,33 @@
+package ImageManager;
+
+import java.awt.Graphics2D;
+
+public class SpeedUpImage extends ImageFile
+{
+
+		private ImageFile image;
+		
+	private boolean isVisible;
+		
+		private int[] speedUps;
+		
+		public SpeedUp()
+		{
+			image = new ImageFile("/Sprites/speedUp.png");
+			isVisible = true;
+			setPosition((int) Math.random() * 301, (int) Math.random() * 221);
+		}
+		
+		public boolean isVisible()
+		{
+			return isVisible;
+		}
+
+		public void draw(Graphics2D g)
+		{
+			g.drawImage(image, (int) posX, (int) posY, null);
+		}
+
+	}
+
+}

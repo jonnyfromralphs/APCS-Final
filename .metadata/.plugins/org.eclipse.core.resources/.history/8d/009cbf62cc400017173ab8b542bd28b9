@@ -1,0 +1,158 @@
+package GameState;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+
+public class PlayState extends GameState
+{
+	
+		//gamesettings
+		private int score = 0;
+		private int round = 0;
+		//position
+		private int flashXPos = 5;
+		private int flashYPos = 220;
+		private int revFlashXPos = 300;
+		private int revFlashYPos = 5;
+		private int speed = 25;
+
+		public PlayState( GameStateManager gsm)
+		{
+			this.gsm = gsm;
+		}
+		
+		public void draw(Graphics2D g)
+		{
+			//sets background
+			g.setColor(Color.black);
+			g.fillRect(0, 0, 320, 240);
+			//flash
+			g.setColor(Color.red);
+			g.fillRect(flashXPos, flashYPos, 10, 15);
+			//reverse flash
+			g.setColor(Color.yellow);
+			g.fillRect(revFlashXPos, revFlashYPos, 10, 15);
+			
+			if(new Rectangle(flashXPos,flashYPos,10,15).intersects(new Rectangle(revFlashXPos, revFlashYPos, 10,15)))
+			{
+				g.setColor(Color.black);
+				g.fillRect(flashXPos, flashYPos,10,15);
+			}
+
+			g.dispose();
+			
+			
+		}
+		
+		public void update()
+		{
+				if(revFlashXPos > flashXPos)
+				{
+					revFlashXPos--;
+					
+				}
+				else if(revFlashXPos < flashXPos)
+				{
+					revFlashXPos++;
+					
+				}
+				else if(revFlashYPos > flashYPos)
+				{
+					revFlashYPos--;
+					
+				}
+				else
+				{
+					revFlashYPos++;
+					
+				}
+			}
+		
+		
+		
+		@Override
+		public void keyPressed(int key) 
+		{
+			if(key == KeyEvent.VK_RIGHT)
+			{
+				moveRight();
+			}
+			if(key == KeyEvent.VK_LEFT)
+			{
+				moveLeft();
+			}
+			if(key == KeyEvent.VK_UP)
+			{
+				moveUp();
+			}
+			if(key == KeyEvent.VK_DOWN)
+			{
+				moveDown();
+			}
+		}
+			
+
+		public void moveRight()
+		{
+			if(flashXPos >= 320)
+			{
+				flashXPos = 320;
+			}
+			else
+			{
+				flashXPos += speed;
+			}
+		}
+		
+		public void moveLeft()
+		{
+			if(flashXPos < 20)
+			{
+				flashXPos = 5;
+			}
+			else
+			{
+				flashXPos -= speed;
+			}
+		}
+		
+		public void moveUp()
+		{
+			if(flashYPos < 20)
+			{
+				flashYPos = 5;
+			}
+			else
+			{
+				flashYPos -= speed;
+			}
+		}
+		
+		public void moveDown()
+		{
+			if(flashYPos >= 225)
+			{
+				flashYPos = 225;
+			}
+			else
+			{
+				flashYPos += speed;
+			}
+		}
+
+		@Override
+		public void init()
+		{
+			
+		}
+
+		@Override
+		public void keyReleased(int key) 
+		{
+			
+		}
+
+}

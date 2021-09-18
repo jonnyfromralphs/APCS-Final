@@ -1,0 +1,84 @@
+package GameState;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+
+import Map.Background;
+
+
+public class EndState extends GameState
+{
+	private Background end;
+ private String[] endOptions;
+ private Font endFont;
+ private Font optionFont;
+ private Color endColor;
+ private int optionSelection;
+ 
+ public EndState(GameStateManager gsm)
+ {
+	 this.gsm = gsm;
+	 endOptions = new String[2];
+	 endOptions[0] = "Restart";
+	 endOptions[1] = "Exit";
+	 try 
+	 {
+		 end = new Background("");
+		 endColor = new Color(0, 0, 0);
+		 endFont = new Font("BN Elements", Font.PLAIN, 30);
+		 optionFont = new Font("BN Elements", Font.PLAIN, 12);
+	 }
+	 catch(Exception e)
+	 {
+		 e.printStackTrace();
+	 }
+ }
+	
+	@Override
+	public void init() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void draw(Graphics2D g) {
+		//background displays
+		end.draw(g);
+		
+		//title
+		g.setColor(endColor);
+		g.setFont(endFont);
+		g.drawString("You Lose, Flash.", 110, 30);
+		
+		//options
+		g.setFont(optionFont);
+		for(int i = 0; i < endOptions.length; i++)
+		{
+			if( i == optionSelection )
+			{
+				
+			}
+		}
+		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(int key) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(int key) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

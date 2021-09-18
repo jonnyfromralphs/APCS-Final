@@ -1,0 +1,22 @@
+package ImageManager;
+
+import java.awt.Graphics2D;
+
+public class SpeedUpImage extends ImageFile
+{
+
+		private boolean isVisible;
+		
+		public SpeedUpImage(String s)
+		{
+			super(s);
+			isVisible = true;
+			setPosition(50,50);
+		}
+		
+		public boolean isVisible()
+		{
+			return isVisible;
+		}
+
+}

@@ -1,0 +1,13 @@
+package GameState;
+
+import ImageManager.ImageFile;
+
+public class Lightning 
+{
+	private ImageFile lightning;
+	
+	public Lightning()
+	{
+		lightning = new ImageFile("/Sprites/lightning.png", flash.getPosX(), flash.getPosY());
+	}
+}

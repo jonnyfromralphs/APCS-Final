@@ -1,0 +1,31 @@
+
+public class SpeedUp {
+	
+	private double posX;
+	private double posY;
+	private ImageFile image;
+	
+private boolean isVisible;
+	
+	private int[] speedUps;
+	
+	public SpeedUp()
+	{
+		image = new ImageFile("/Sprites/speedUp.png");
+		isVisible = true;
+		posX = (int) Math.random() * 301;
+		posY = (int) Math.random() * 221;
+		
+	}
+	
+	public boolean isVisible()
+	{
+		return isVisible;
+	}
+
+	public void draw(Graphics2D g)
+	{
+		g.drawImage(image, (int) posX, (int) posY, null);
+	}
+
+}
